@@ -6,14 +6,9 @@
     <SharedGUID>4e7d37c7-8afe-4f79-baf6-4ce82d05e091</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>Mod.Template.Content</Import_RootNamespace>
+    <Import_RootNamespace>Distance.MenuUtilities.Content</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)Mod\mod.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Mod\" />
+    <Content Include="$(MSBuildThisFileDirectory)Mod\mod.json" />
   </ItemGroup>
 </Project>
