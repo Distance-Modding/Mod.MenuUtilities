@@ -105,6 +105,7 @@
     <Compile Include="Scripts\LevelPlaylistCompoundData.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Distance.MenuUtilities.targets" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -120,6 +121,5 @@
     <TransformOutOfDateOnly>false</TransformOutOfDateOnly>
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\TextTemplating\Microsoft.TextTemplating.targets" />
-  <Import Project="$(SolutionDir)Tool.BuildTargets\Distance.Modding.props" />
   <Import Project="$(SolutionDir)Tool.BuildTargets\Distance.Modding.targets" />
 </Project>
