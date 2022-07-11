@@ -5,6 +5,7 @@ using Reactor.API.Attributes;
 using Reactor.API.Interfaces.Systems;
 using Reactor.API.Logging;
 using Reactor.API.Runtime.Patching;
+using System.Reflection;
 using UnityEngine;
 
 namespace Distance.MenuUtilities
@@ -31,9 +32,31 @@ namespace Distance.MenuUtilities
 			Logger = LogManager.GetForCurrentAssembly();
 			Config = gameObject.AddComponent<ConfigurationLogic>();
 
-			RuntimePatcher.AutoPatch();
+			try
+			{
+				// Never ever EVER use this!!!
+				// It's the same as below (with `GetCallingAssembly`) wrapped around a silent catch-all.
+				//RuntimePatcher.AutoPatch();
 
-			CreateSettingsMenu();
+				RuntimePatcher.HarmonyInstance.PatchAll(Assembly.GetExecutingAssembly());
+			}
+			catch (System.Exception e)
+			{
+				Logger.Error("Error during Harmony.PatchAll()");
+				Logger.Exception(e);
+				throw;
+			}
+
+			try
+			{
+				CreateSettingsMenu();
+			}
+			catch (System.Exception e)
+			{
+				Logger.Error("Error during CreateSettingsMenu()");
+				Logger.Exception(e);
+				throw;
+			}
 		}
 
 		public void CreateSettingsMenu()
@@ -50,6 +73,16 @@ namespace Distance.MenuUtilities
 					.WithGetter(() => Config.EnableHexColorInput)
 					.WithSetter((x) => Config.EnableHexColorInput = x)
 					.WithDescription("Display a button to modify the hexadecimal color value as text in the car customization menu."),
+
+				new CheckBox(MenuDisplayMode.Both, "setting:enable_slider_page_buttons", "SLIDER PAGE BUTTONS")
+					.WithGetter(() => Config.EnableSliderPageButtons)
+					.WithSetter((x) => Config.EnableSliderPageButtons = x)
+					.WithDescription("Enable page buttons for integer slider options. Use the MenuPageLeft and MenuPageRight input bindings to move in larger increments."),
+
+				new CheckBox(MenuDisplayMode.Both, "setting:enable_completion_progress_bar_fix", "FIX COMPLETION PROGRESS BARS")
+					.WithGetter(() => Config.EnableCompletionProgressBarFix)
+					.WithSetter((x) => Config.EnableCompletionProgressBarFix = x)
+					.WithDescription("Completion progress bars shown next to level sets and arcade modes will move in sync, and not restart from 0% when scrolling."),
 			};
 
 			Menus.AddNew(MenuDisplayMode.Both, settingsMenu, "MENU UTILITIES", "Settings for the Menu Utilities mod.");
