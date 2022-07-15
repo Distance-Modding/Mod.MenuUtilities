@@ -105,7 +105,6 @@ namespace Distance.MenuUtilities.Scripts
 					// Arbitrarily increase increment amount based on total number of steps.
 					// Each amount of steps has a small amount subtracted to account for options with higher minimum values.
 					float increment = 1f / (float)(steps - 1);
-					Mod.Instance.Logger.Info($"steps = {steps}");
 					if (steps < 20 - 2)
 					{
 						increment *= 2f;
