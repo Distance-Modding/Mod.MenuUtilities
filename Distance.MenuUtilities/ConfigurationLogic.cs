@@ -7,32 +7,28 @@ namespace Distance.MenuUtilities
 	public class ConfigurationLogic : MonoBehaviour
 	{
 		#region Properties
-		private const string EnableDeletePlaylistButton_ID = "EnableDeletePlaylistButton";
 		public bool EnableDeletePlaylistButton
 		{
-			get => Get<bool>(EnableDeletePlaylistButton_ID);
-			set => Set(EnableDeletePlaylistButton_ID, value);
+			get => Get<bool>("EnableDeletePlaylistButton");
+			set => Set("EnableDeletePlaylistButton", value);
 		}
 
-		private const string EnableHexColorInput_ID = "EnableHexColorInput";
 		public bool EnableHexColorInput
 		{
-			get => Get<bool>(EnableHexColorInput_ID);
-			set => Set(EnableHexColorInput_ID, value);
+			get => Get<bool>("EnableHexColorInput");
+			set => Set("EnableHexColorInput", value);
 		}
 
-		private const string EnableSliderPageButtons_ID = "EnableSliderPageButtons";
 		public bool EnableSliderPageButtons
 		{
-			get => Get<bool>(EnableSliderPageButtons_ID);
-			set => Set(EnableSliderPageButtons_ID, value);
+			get => Get<bool>("EnableSliderPageButtons");
+			set => Set("EnableSliderPageButtons", value);
 		}
 
-		private const string EnableCompletionProgressBarFix_ID = "EnableCompletionProgressBarFix";
 		public bool EnableCompletionProgressBarFix
 		{
-			get => Get<bool>(EnableCompletionProgressBarFix_ID);
-			set => Set(EnableCompletionProgressBarFix_ID, value);
+			get => Get<bool>("EnableCompletionProgressBarFix");
+			set => Set("EnableCompletionProgressBarFix", value);
 		}
 		#endregion
 
@@ -49,10 +45,10 @@ namespace Distance.MenuUtilities
 		{
 			Load();
 
-			Get(EnableDeletePlaylistButton_ID, true);
-			Get(EnableHexColorInput_ID, true);
-			Get(EnableSliderPageButtons_ID, true);
-			Get(EnableCompletionProgressBarFix_ID, true);
+			Get("EnableDeletePlaylistButton", true);
+			Get("EnableHexColorInput", true);
+			Get("EnableSliderPageButtons", true);
+			Get("EnableCompletionProgressBarFix", true);
 
 			Save();
 		}
