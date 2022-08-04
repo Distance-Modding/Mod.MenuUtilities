@@ -18,6 +18,18 @@ namespace Distance.MenuUtilities
 			get => Get<bool>("EnableHexColorInput");
 			set => Set("EnableHexColorInput", value);
 		}
+
+		public bool EnableSliderPageButtons
+		{
+			get => Get<bool>("EnableSliderPageButtons");
+			set => Set("EnableSliderPageButtons", value);
+		}
+
+		public bool EnableCompletionProgressBarFix
+		{
+			get => Get<bool>("EnableCompletionProgressBarFix");
+			set => Set("EnableCompletionProgressBarFix", value);
+		}
 		#endregion
 
 		internal Settings Config;
@@ -35,6 +47,8 @@ namespace Distance.MenuUtilities
 
 			Get("EnableDeletePlaylistButton", true);
 			Get("EnableHexColorInput", true);
+			Get("EnableSliderPageButtons", true);
+			Get("EnableCompletionProgressBarFix", true);
 
 			Save();
 		}
